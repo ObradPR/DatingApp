@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+
+// SERVICES
 import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
+  providers: [
+    {
+      provide: BsDropdownConfig,
+      useValue: { isAnimated: true, autoClose: true },
+    },
+  ],
 })
 export class NavComponent {
   model: any = {};
@@ -22,7 +31,7 @@ export class NavComponent {
     });
   }
 
-  logout(): void{
+  logout(): void {
     this.loggedIn = false;
   }
 }
