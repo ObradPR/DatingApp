@@ -4,7 +4,6 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 // SERVICES
 import { AccountService } from '../_services/account.service';
-import { ToastrService } from 'ngx-toastr';
 
 // INTERFACES
 
@@ -22,19 +21,13 @@ import { ToastrService } from 'ngx-toastr';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(
-    public accountService: AccountService,
-    private router: Router,
-    private toastr: ToastrService
-  ) {}
+  constructor(public accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
 
   login() {
     this.accountService.login(this.model).subscribe({
       next: () => this.router.navigateByUrl('/members'),
-
-      error: (error: any) => this.toastr.error(error.error),
     });
   }
 
