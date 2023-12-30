@@ -26,10 +26,10 @@ namespace API.Entities
 
         #region Methods
 
-        public int GetAge()
-        {
-            return DateOfBirth.CalculateAge();
-        }   
+        // public int GetAge()
+        // {
+        //     return DateOfBirth.CalculateAge();
+        // }   
         
         #endregion
     }
