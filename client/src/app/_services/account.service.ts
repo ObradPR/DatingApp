@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 
 // INTERFACES
 import { User } from '../_interfaces/user.interface';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$: Observable<User | null> = this.currentUserSource.asObservable();
 
@@ -31,7 +32,7 @@ export class AccountService {
 
   register(model: any) {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
-      map((user) => {
+      map(user => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
 
